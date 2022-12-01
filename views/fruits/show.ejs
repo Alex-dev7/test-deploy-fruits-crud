@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs')  %> 
+<body>
+    <%- include("../partials/header.ejs") %>
+
+        <main>
+            <div>
+                <!-- //this is some framework code for button -->
+                <article x-data="{showTools: false}"> 
+                        <h2>
+                            <%= fruit.name %> - <%= fruit.readyToEat ? "Ripe" : "Not Ripe" %>  
+                        </h2>
+                        <h3> <%= fruit.color  %> </h3>
+                        <button x-on:click="showTools = !showTools">Show Options</button>
+          <div x-show="showTools" x-transition>
+                        <a href="/fruits/<%= fruit._id %>/edit ">
+                            <button>Edit</button>
+                         </a>
+                         <form action="/fruits/<%= fruit._id %>?_method=DELETE" method="POST">
+                                <input type="submit" value="Delete"/>
+                         </form>
+                         <a href="/fruits"><button>Back</button></a>
+                </article>
+            </div>
+        </main>
+    
+</body>
+</html>
